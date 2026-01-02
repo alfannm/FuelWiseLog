@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Simple Material3 theme. You can edit colors in values/colors.xml -->
+    <style name="Theme.FuelWiseLog" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
