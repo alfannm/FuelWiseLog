@@ -16,6 +16,7 @@ import com.example.fuelwiselog.util.Prefs;
 import com.example.fuelwiselog.data.Vehicle;
 import com.example.fuelwiselog.databinding.ActivityVehicleManagerBinding;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.color.MaterialColors;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +33,7 @@ public class VehicleManagerActivity extends AppCompatActivity {
     private final List<String> vehicleTypes = Arrays.asList("Car", "Motorcycle", "Lorry", "Van", "Others");
     private final List<String> vehicleColors = Arrays.asList(
             "#B4A7D6", "#F5B8D4", "#A7C7E7", "#B8E6D5",
-            "#F5D7A8", "#F5B8B8", "#C7B8E6", "#A8E6E0"
+            "#F5D7A8", "#F5B8B8", "#A0BFFF", "#C3E59F"
     );
 
     @Override
@@ -99,12 +100,31 @@ public class VehicleManagerActivity extends AppCompatActivity {
             String hex = vehicleColors.get(i);
 
             Chip chip = new Chip(this);
-            chip.setText(" ");
+            int chipSize = dpToPx(36);
+            int chipMargin = dpToPx(6);
+            android.view.ViewGroup.MarginLayoutParams params =
+                    new android.view.ViewGroup.MarginLayoutParams(chipSize, chipSize);
+            params.setMargins(0, 0, chipMargin, chipMargin);
+            chip.setLayoutParams(params);
             chip.setCheckable(true);
             chip.setClickable(true);
+            chip.setCheckedIconVisible(true);
+            chip.setCheckedIconResource(com.example.fuelwiselog.R.drawable.ic_check_24);
+            chip.setCheckedIconTint(ColorStateList.valueOf(Color.BLACK));
             chip.setChipIconVisible(false);
             chip.setCloseIconVisible(false);
-            chip.setEnsureMinTouchTargetSize(true);
+            chip.setEnsureMinTouchTargetSize(false);
+            chip.setChipCornerRadius(dpToPx(10));
+            chip.setText("");
+            chip.setRippleColor(ColorStateList.valueOf(Color.TRANSPARENT));
+
+            int outlineColor = MaterialColors.getColor(chip,
+                    com.google.android.material.R.attr.colorOnSurface, Color.BLACK);
+            chip.setChipStrokeWidth(dpToPx(2));
+            chip.setChipStrokeColor(new ColorStateList(
+                    new int[][]{new int[]{android.R.attr.state_checked}, new int[]{}},
+                    new int[]{outlineColor, Color.TRANSPARENT}
+            ));
 
             try {
                 chip.setChipBackgroundColor(ColorStateList.valueOf(Color.parseColor(hex)));
@@ -198,5 +218,9 @@ public class VehicleManagerActivity extends AppCompatActivity {
     private Chip findCheckedChip() {
         int id = binding.chipGroupColors.getCheckedChipId();
         return binding.chipGroupColors.findViewById(id);
+    }
+
+    private int dpToPx(int dp) {
+        return Math.round(dp * getResources().getDisplayMetrics().density);
     }
 }
