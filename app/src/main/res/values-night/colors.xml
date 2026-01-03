@@ -10,4 +10,5 @@
     <color name="l_per_100">#80DEEA</color>
     <color name="active_text">#69F0AE</color>
     <color name="active_background">#3369F0AE</color>
+    <color name="icon_on_select">#1B1B1B</color>
 </resources>
