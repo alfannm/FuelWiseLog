@@ -4,37 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    app:cardCornerRadius="24dp"
-    app:cardElevation="6dp">
+    app:cardCornerRadius="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_glass_card"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <!-- Header row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardColor"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                app:cardCornerRadius="12dp">
+                app:cardCornerRadius="12dp"
+                android:layout_marginEnd="10dp">
 
-                <ImageView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="Fuel record"
-                    android:padding="8dp"
-                    app:srcCompat="@drawable/ic_fuel_24"
-                    app:tint="@android:color/white" />
+                    android:gravity="center"
+                    android:text="⛽"
+                    android:textSize="16sp"/>
             </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
@@ -48,8 +45,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Vehicle"
-                    android:textColor="@color/text_primary"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"/>
 
                 <TextView
                     android:id="@+id/tvDate"
@@ -57,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:text="2026-01-01"
                     android:textColor="@color/text_secondary"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"/>
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -65,16 +62,11 @@
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
-                android:contentDescription="Delete record"
+                android:text="🗑"
+                android:minWidth="0dp"
                 android:insetLeft="0dp"
                 android:insetRight="0dp"
-                android:minWidth="0dp"
-                android:padding="0dp"
-                android:text=""
-                app:icon="@drawable/ic_delete_24"
-                app:iconPadding="0dp"
-                app:iconSize="18dp"
-                app:iconTint="@color/text_primary" />
+                android:padding="0dp"/>
         </LinearLayout>
 
         <!-- Details -->
@@ -88,77 +80,77 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#221A73E8"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:background="@drawable/bg_volume"
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Volume"
-                    android:textColor="@color/volume"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@color/volume"/>
 
                 <TextView
                     android:id="@+id/tvVolume"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0.0L"
+                    android:textStyle="bold"
                     android:textColor="@color/text_primary"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:background="#2222C55E"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_cost"
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cost"
-                    android:textColor="@color/cost"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp"
+                    android:textColor="@color/cost"/>
 
                 <TextView
                     android:id="@+id/tvCost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="RM0.00"
+                    android:textStyle="bold"
                     android:textColor="@color/text_primary"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
+                    android:textSize="16sp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:background="#22B67CFF"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_mileage"
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mileage"
-                    android:textColor="@color/mileage"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@color/mileage"/>
 
                 <TextView
                     android:id="@+id/tvMileage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0km"
+                    android:textStyle="bold"
                     android:textColor="@color/text_primary"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -175,10 +167,10 @@
                 android:id="@+id/tvSince"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:text="Since last fill-up (0 km)"
                 android:textColor="@color/text_secondary"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:layout_marginBottom="8dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -189,51 +181,51 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#22FFB74D"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:background="@drawable/bg_rm_per_km"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="RM per km"
-                        android:textColor="@color/rm_per_km"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:textColor="@color/rm_per_km"/>
 
                     <TextView
                         android:id="@+id/tvRmPerKm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="RM 0.00"
+                        android:textStyle="bold"
                         android:textColor="@color/text_primary"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textSize="16sp"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="#2200BCD4"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_l_per_100"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="L per 100 km"
-                        android:textColor="@color/l_per_100"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:textColor="@color/l_per_100"/>
 
                     <TextView
                         android:id="@+id/tvLPer100"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0.00 L"
+                        android:textStyle="bold"
                         android:textColor="@color/text_primary"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textSize="16sp"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -242,11 +234,11 @@
             android:id="@+id/tvNoEfficiency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:text="First record or no previous data for comparison"
             android:textColor="@color/text_tertiary"
             android:textSize="12sp"
-            android:visibility="gone" />
+            android:layout_marginTop="12dp"
+            android:visibility="gone"/>
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

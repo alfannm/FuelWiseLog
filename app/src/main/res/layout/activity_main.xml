@@ -1,8 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_app_gradient"
     android:fillViewport="true">
 
     <LinearLayout
@@ -19,50 +19,23 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnThemeLight"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="8dp"
-                android:contentDescription="Light mode"
-                android:insetLeft="0dp"
-                android:insetRight="0dp"
-                android:minWidth="0dp"
-                android:text=""
-                app:icon="@drawable/ic_theme_light_24"
-                app:iconTint="@color/text_primary"
-                app:iconPadding="0dp"
-                app:iconSize="20dp" />
+                android:text="☀"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnThemeSystem"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="8dp"
-                android:contentDescription="System theme"
-                android:insetLeft="0dp"
-                android:insetRight="0dp"
-                android:minWidth="0dp"
-                android:text=""
-                app:icon="@drawable/ic_theme_system_24"
-                app:iconTint="@color/text_primary"
-                app:iconPadding="0dp"
-                app:iconSize="20dp" />
+                android:text="🖥"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnThemeDark"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:contentDescription="Dark mode"
-                android:insetLeft="0dp"
-                android:insetRight="0dp"
-                android:minWidth="0dp"
-                android:text=""
-                app:icon="@drawable/ic_theme_dark_24"
-                app:iconTint="@color/text_primary"
-                app:iconPadding="0dp"
-                app:iconSize="20dp" />
+                android:text="🌙"/>
         </LinearLayout>
 
         <!-- Hero -->
@@ -76,17 +49,16 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                app:cardBackgroundColor="#D8B4FE"
                 app:cardCornerRadius="18dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="#D8B4FE">
 
-                <ImageView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="Fuel"
-                    android:padding="18dp"
-                    app:srcCompat="@drawable/ic_fuel_24"
-                    app:tint="@color/text_primary" />
+                    android:gravity="center"
+                    android:text="⛽"
+                    android:textSize="28sp"/>
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -95,13 +67,13 @@
                 android:layout_marginTop="12dp"
                 android:text="FuelWise"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Monitor your vehicle's fuel efficiency"
-                android:textSize="14sp" />
+                android:textSize="14sp"/>
         </LinearLayout>
 
         <!-- No vehicle selected card -->
@@ -110,14 +82,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@android:color/transparent"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="10dp">
+            app:cardCornerRadius="24dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_glass_card"
                 android:padding="18dp">
 
                 <TextView
@@ -125,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="No vehicle selected. Add a vehicle to get started!"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -135,34 +104,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:visibility="gone"
-            app:cardBackgroundColor="@android:color/transparent"
             app:cardCornerRadius="24dp"
-            app:cardElevation="10dp">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_glass_card"
-                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="18dp">
+                android:padding="18dp"
+                android:gravity="center_vertical">
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardVehicleColor"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    app:cardBackgroundColor="#B4A7D6"
                     app:cardCornerRadius="14dp"
-                    app:cardElevation="8dp">
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="#B4A7D6">
 
-                    <ImageView
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:contentDescription="Vehicle"
-                        android:padding="10dp"
-                        app:srcCompat="@drawable/ic_vehicle_24"
-                        app:tint="@android:color/white" />
+                        android:gravity="center"
+                        android:text="🚗"
+                        android:textSize="18sp"/>
                 </com.google.android.material.card.MaterialCardView>
 
                 <LinearLayout
@@ -176,36 +141,36 @@
                         android:id="@+id/tvVehicleName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="My Vehicle"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:text="My Vehicle"/>
 
                     <TextView
                         android:id="@+id/tvVehicleType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Car"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="end">
 
                     <TextView
                         android:id="@+id/tvRecordCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Records"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"/>
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -216,15 +181,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:visibility="gone"
-            app:cardBackgroundColor="@android:color/transparent"
             app:cardCornerRadius="24dp"
-            app:cardElevation="10dp">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_glass_card"
                 android:orientation="vertical"
                 android:padding="18dp">
 
@@ -232,7 +194,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fuel Summary"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -249,15 +211,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Avg RM/km"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"/>
 
                         <TextView
                             android:id="@+id/tvAvgRmPerKm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="RM 0.00"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:text="—"
+                            android:textStyle="bold"
+                            android:textSize="18sp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -270,15 +232,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Avg L/100km"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"/>
 
                         <TextView
                             android:id="@+id/tvAvgLPer100"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00 L"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:text="—"
+                            android:textStyle="bold"
+                            android:textSize="18sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -287,13 +249,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Total Distance: 0 km" />
+                    android:text="Total Distance: — km"/>
 
                 <TextView
                     android:id="@+id/tvTotalCost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Cost: RM 0.00" />
+                    android:text="Total Cost: RM —"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -303,26 +265,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@android:color/transparent"
             app:cardCornerRadius="24dp"
-            app:cardElevation="10dp">
+            android:clickable="true"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_action_purple"
-                android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:padding="18dp">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Manage vehicles"
-                    app:srcCompat="@drawable/ic_vehicle_24"
-                    app:tint="@color/text_primary" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🚗"
+                    android:textSize="22sp"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -335,21 +294,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Manage Vehicles"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Add or select vehicles"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"/>
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Open"
-                    app:srcCompat="@drawable/ic_arrow_right_24"
-                    app:tint="@color/text_primary" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="→"
+                    android:textSize="24sp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -358,26 +316,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@android:color/transparent"
             app:cardCornerRadius="24dp"
-            app:cardElevation="10dp">
+            android:clickable="true"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_action_pink"
-                android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:padding="18dp">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Add fuel record"
-                    app:srcCompat="@drawable/ic_fuel_24"
-                    app:tint="@color/text_primary" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⛽"
+                    android:textSize="22sp"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -390,21 +345,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Add Fuel Record"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Log a new fill-up"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"/>
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Open"
-                    app:srcCompat="@drawable/ic_arrow_right_24"
-                    app:tint="@color/text_primary" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="→"
+                    android:textSize="24sp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -413,26 +367,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@android:color/transparent"
             app:cardCornerRadius="24dp"
-            app:cardElevation="10dp">
+            android:clickable="true"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_action_blue"
-                android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:padding="18dp">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="View fuel log"
-                    app:srcCompat="@drawable/ic_log_24"
-                    app:tint="@color/text_primary" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🕒"
+                    android:textSize="22sp"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -445,21 +396,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="View Fuel Log"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="See all records &amp; stats"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"/>
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Open"
-                    app:srcCompat="@drawable/ic_arrow_right_24"
-                    app:tint="@color/text_primary" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="→"
+                    android:textSize="24sp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

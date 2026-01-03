@@ -6,32 +6,30 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="24dp"
-    app:cardElevation="6dp"
-    app:strokeColor="#00000000"
-    app:strokeWidth="2dp">
+    app:strokeWidth="2dp"
+    app:strokeColor="#00000000">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_glass_card"
+        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:padding="14dp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardColor"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginEnd="12dp"
             app:cardCornerRadius="14dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            android:layout_marginEnd="12dp">
 
-            <ImageView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="Vehicle"
-                android:padding="10dp"
-                app:srcCompat="@drawable/ic_vehicle_24"
-                app:tint="@android:color/white" />
+                android:gravity="center"
+                android:text="🚗"
+                android:textSize="18sp"/>
         </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
@@ -46,8 +44,8 @@
                 android:layout_height="wrap_content"
                 android:text="My Vehicle"
                 android:textColor="@color/text_primary"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/tvType"
@@ -64,73 +62,58 @@
                 android:text="ABC1234"
                 android:textColor="@color/mileage"
                 android:textSize="12sp"
-                android:visibility="gone" />
+                android:visibility="gone"/>
         </LinearLayout>
 
         <TextView
             android:id="@+id/tvActive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@color/active_background"
+            android:text="Active"
+            android:textSize="12sp"
+            android:textColor="@color/active_text"
+            android:background="@drawable/bg_active"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
-            android:text="Active"
-            android:textColor="@color/active_text"
-            android:textSize="12sp"
-            android:visibility="gone" />
+            android:layout_marginEnd="8dp"
+            android:visibility="gone"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEdit"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:contentDescription="Edit vehicle"
+            android:text="✎"
+            android:minWidth="0dp"
             android:insetLeft="0dp"
             android:insetRight="0dp"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:text=""
-            app:icon="@drawable/ic_edit_24"
-            app:iconPadding="0dp"
-            app:iconSize="18dp"
-            app:iconTint="@color/text_primary" />
+            android:padding="0dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSelect"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:text="✓"
+            android:minWidth="0dp"
             android:layout_marginStart="6dp"
-            android:contentDescription="Select vehicle"
             android:insetLeft="0dp"
             android:insetRight="0dp"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:text=""
-            app:icon="@drawable/ic_check_24"
-            app:iconPadding="0dp"
-            app:iconSize="18dp"
-            app:iconTint="@android:color/white" />
+            android:padding="0dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDelete"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:text="🗑"
+            android:minWidth="0dp"
             android:layout_marginStart="6dp"
-            android:contentDescription="Delete vehicle"
             android:insetLeft="0dp"
             android:insetRight="0dp"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:text=""
-            app:icon="@drawable/ic_delete_24"
-            app:iconPadding="0dp"
-            app:iconSize="18dp"
-            app:iconTint="@color/text_primary" />
+            android:padding="0dp"/>
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>
