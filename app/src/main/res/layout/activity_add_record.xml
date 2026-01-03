@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@drawable/bg_app_gradient">
+    android:background="@drawable/bg_app_gradient"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,21 +16,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:background="@drawable/bg_glass_card"
             android:gravity="center_vertical"
-            android:padding="10dp"
-            android:background="@drawable/bg_glass_card">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBack"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
-                android:text="←"
-                android:minWidth="0dp"
+                android:contentDescription="Back"
                 android:insetLeft="0dp"
                 android:insetRight="0dp"
-                android:padding="0dp" />
+                android:minWidth="0dp"
+                android:padding="0dp"
+                android:text=""
+                app:icon="@drawable/ic_back_24"
+                app:iconPadding="0dp"
+                app:iconSize="20dp"
+                app:iconTint="@color/text_primary" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -42,9 +47,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Add Fuel Record"
+                    android:textColor="@color/text_primary"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -82,10 +87,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:background="#22B67CFF"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp"
                 android:visibility="gone">
 
                 <com.google.android.material.card.MaterialCardView
@@ -94,12 +99,13 @@
                     android:layout_height="40dp"
                     app:cardCornerRadius="12dp">
 
-                    <TextView
+                    <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="⛽"
-                        android:textSize="16sp"/>
+                        android:contentDescription="Vehicle"
+                        android:padding="8dp"
+                        app:srcCompat="@drawable/ic_vehicle_24"
+                        app:tint="@android:color/white" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <LinearLayout
@@ -113,8 +119,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Vehicle Name"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"/>
+                        android:textColor="@color/text_primary"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvPreviewType"
@@ -122,7 +128,7 @@
                         android:layout_height="wrap_content"
                         android:text="Type"
                         android:textColor="@color/text_secondary"
-                        android:textSize="13sp"/>
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -147,8 +153,8 @@
                     android:id="@+id/etDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:clickable="true"/>
+                    android:clickable="true"
+                    android:focusable="false" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -171,7 +177,7 @@
                     android:id="@+id/etLiters"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"/>
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -194,7 +200,7 @@
                     android:id="@+id/etCost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"/>
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -210,10 +216,10 @@
                 android:id="@+id/tvLastMileage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Last recorded: — km"
+                android:layout_marginBottom="6dp"
+                android:text="Last recorded: 0 km"
                 android:textColor="@color/text_secondary"
-                android:textSize="12sp"
-                android:layout_marginBottom="6dp"/>
+                android:textSize="12sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilMileage"
@@ -226,7 +232,7 @@
                     android:id="@+id/etMileage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"/>
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -235,10 +241,10 @@
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Record"
             android:layout_marginTop="16dp"
             android:paddingTop="16dp"
-            android:paddingBottom="16dp" />
+            android:paddingBottom="16dp"
+            android:text="Add Record" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@drawable/bg_app_gradient">
+    android:background="@drawable/bg_app_gradient"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,21 +17,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:background="@drawable/bg_glass_card"
             android:gravity="center_vertical"
-            android:padding="10dp"
-            android:background="@drawable/bg_glass_card">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBack"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
-                android:text="←"
-                android:minWidth="0dp"
+                android:contentDescription="Back"
                 android:insetLeft="0dp"
                 android:insetRight="0dp"
-                android:padding="0dp" />
+                android:minWidth="0dp"
+                android:padding="0dp"
+                android:text=""
+                app:icon="@drawable/ic_back_24"
+                app:iconPadding="0dp"
+                app:iconSize="20dp"
+                app:iconTint="@color/text_primary" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -45,8 +50,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="My Vehicles"
-                    android:textSize="18sp"
                     android:textColor="@color/text_primary"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -63,12 +68,16 @@
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
-                android:text="+"
-                android:textSize="20sp"
-                android:minWidth="0dp"
+                android:contentDescription="Add vehicle"
                 android:insetLeft="0dp"
                 android:insetRight="0dp"
-                android:padding="0dp" />
+                android:minWidth="0dp"
+                android:padding="0dp"
+                android:text=""
+                app:icon="@drawable/ic_add_24"
+                app:iconPadding="0dp"
+                app:iconSize="20dp"
+                app:iconTint="@android:color/white" />
 
         </LinearLayout>
 
@@ -78,20 +87,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:orientation="vertical"
             android:background="@drawable/bg_glass_card"
-            android:visibility="gone"
-            android:padding="14dp">
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tvFormTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="Add New Vehicle"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:textColor="@color/text_primary"
-                android:layout_marginBottom="10dp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilName"
@@ -111,8 +120,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Plate Number (optional)"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:hint="Plate Number (optional)">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPlate"
@@ -126,8 +135,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Vehicle Type"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:hint="Vehicle Type">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/actType"
@@ -139,25 +148,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="12dp"
                 android:text="Color"
                 android:textColor="@color/text_secondary"
-                android:textSize="13sp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="6dp"/>
+                android:textSize="13sp" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroupColors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:singleSelection="true"
+                android:paddingBottom="6dp"
                 app:selectionRequired="true"
-                android:paddingBottom="6dp"/>
+                app:singleSelection="true" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSaveVehicle"
@@ -185,8 +194,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:background="@drawable/bg_glass_card"
-            android:orientation="vertical"
             android:gravity="center"
+            android:orientation="vertical"
             android:padding="24dp"
             android:visibility="gone">
 
@@ -194,17 +203,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No vehicles yet"
-                android:textStyle="bold"
                 android:textColor="@color/text_primary"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:text="Add your first vehicle to get started"
                 android:textColor="@color/text_secondary"
-                android:textSize="13sp"
-                android:layout_marginTop="6dp" />
+                android:textSize="13sp" />
         </LinearLayout>
 
         <!-- Vehicle List -->
