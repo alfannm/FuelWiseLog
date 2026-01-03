@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FuelWise Log</string>
     <string name="add_record">Add record</string>
@@ -21,4 +22,10 @@
     <string name="invalid_number">Please enter a valid number.</string>
     <string name="must_be_positive">Value must be greater than 0.</string>
     <string name="odometer_must_increase">Odometer must be greater than the last record.</string>
+
+    <string-array name="themes">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>System</item>
+    </string-array>
 </resources>

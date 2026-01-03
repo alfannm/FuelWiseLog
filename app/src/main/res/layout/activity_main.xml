@@ -11,33 +11,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Theme Switcher -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnThemeLight"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="8dp"
-                android:text="☀"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnThemeSystem"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="8dp"
-                android:text="🖥"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnThemeDark"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:text="🌙"/>
-        </LinearLayout>
-
         <!-- Hero -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -294,12 +267,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Manage Vehicles"
+                        android:textColor="@color/text_primary"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Add or select vehicles"
+                        android:textColor="@color/text_primary"
                         android:textSize="12sp"/>
                 </LinearLayout>
 
@@ -307,6 +282,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="→"
+                    android:textColor="@color/text_primary"
                     android:textSize="24sp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -345,12 +321,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Add Fuel Record"
+                        android:textColor="@color/text_primary"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Log a new fill-up"
+                        android:textColor="@color/text_primary"
                         android:textSize="12sp"/>
                 </LinearLayout>
 
@@ -358,6 +336,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="→"
+                    android:textColor="@color/text_primary"
                     android:textSize="24sp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -396,12 +375,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="View Fuel Log"
+                        android:textColor="@color/text_primary"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="See all records &amp; stats"
+                        android:textColor="@color/text_primary"
                         android:textSize="12sp"/>
                 </LinearLayout>
 
@@ -409,9 +390,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="→"
+                    android:textColor="@color/text_primary"
                     android:textSize="24sp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <!-- Theme Selector -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTheme"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Theme">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/actTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:saveEnabled="false" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

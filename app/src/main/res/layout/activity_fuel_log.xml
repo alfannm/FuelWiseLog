@@ -62,26 +62,20 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Filter -->
-        <com.google.android.material.card.MaterialCardView
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFilter"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:cardCornerRadius="24dp">
+            android:hint="Filter Vehicle">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilFilter"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/actFilter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Filter Vehicle">
-
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/actFilter"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </com.google.android.material.card.MaterialCardView>
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Average efficiency -->
         <com.google.android.material.card.MaterialCardView
@@ -116,7 +110,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="#22B67CFF"
+                        android:background="@drawable/bg_avg_rm"
+                        android:orientation="vertical"
                         android:padding="12dp">
 
                         <TextView
@@ -141,7 +136,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginStart="10dp"
-                        android:background="#22FF8BD1"
+                        android:background="@drawable/bg_avg_l"
+                        android:orientation="vertical"
                         android:padding="12dp">
 
                         <TextView

@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.fuelwiselog.R;
 import com.example.fuelwiselog.data.FuelRecord;
 import com.example.fuelwiselog.data.Vehicle;
 import com.example.fuelwiselog.databinding.ActivityMainBinding;
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private final DecimalFormat df2 = new DecimalFormat("0.00");
 
     private long selectedVehicleId = -1L;
+    private LiveData<List<FuelRecord>> recordsLiveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         vm = new ViewModelProvider(this).get(FuelViewModel.class);
 
-        setupThemeButtons();
+        setupThemeDropdown();
 
         binding.cardManageVehicles.setOnClickListener(v ->
                 startActivity(new Intent(this, VehicleManagerActivity.class)));
@@ -74,18 +78,35 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         // Refresh selection after coming back from VehicleManager
         selectedVehicleId = Prefs.getSelectedVehicleId(this);
+        renderSelectedVehicleCard(vm.getVehicles().getValue());
         updateActionEnabledState();
+        observeSelectedVehicleRecords();
     }
 
-    private void setupThemeButtons() {
-        binding.btnThemeLight.setOnClickListener(v ->
-                Prefs.setNightMode(this, AppCompatDelegate.MODE_NIGHT_NO));
+    private void setupThemeDropdown() {
+        String[] themes = getResources().getStringArray(R.array.themes);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item, themes);
+        binding.actTheme.setAdapter(adapter);
 
-        binding.btnThemeSystem.setOnClickListener(v ->
-                Prefs.setNightMode(this, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM));
+        int mode = Prefs.getNightMode(this);
+        int initialIndex = 2; // System default
+        if (mode == AppCompatDelegate.MODE_NIGHT_NO) {
+            initialIndex = 0;
+        } else if (mode == AppCompatDelegate.MODE_NIGHT_YES) {
+            initialIndex = 1;
+        }
+        binding.actTheme.setText(themes[initialIndex], false);
 
-        binding.btnThemeDark.setOnClickListener(v ->
-                Prefs.setNightMode(this, AppCompatDelegate.MODE_NIGHT_YES));
+        binding.actTheme.setOnItemClickListener((parent, view, position, id) -> {
+            binding.actTheme.clearFocus();
+            int newMode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+            if (position == 0) {
+                newMode = AppCompatDelegate.MODE_NIGHT_NO;
+            } else if (position == 1) {
+                newMode = AppCompatDelegate.MODE_NIGHT_YES;
+            }
+            Prefs.setNightMode(this, newMode);
+        });
     }
 
     private void updateActionEnabledState() {
@@ -129,7 +150,11 @@ public class MainActivity extends AppCompatActivity {
     private void observeSelectedVehicleRecords() {
         if (selectedVehicleId < 0) return;
 
-        vm.getRecordsByVehicleMileageAsc(selectedVehicleId).observe(this, records -> {
+        if (recordsLiveData != null) {
+            recordsLiveData.removeObservers(this);
+        }
+        recordsLiveData = vm.getRecordsByVehicleMileageAsc(selectedVehicleId);
+        recordsLiveData.observe(this, records -> {
             int count = records == null ? 0 : records.size();
             binding.tvRecordCount.setText(String.valueOf(count));
 
