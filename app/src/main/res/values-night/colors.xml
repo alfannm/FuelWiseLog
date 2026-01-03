@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#CACACA</color>
+    <color name="text_tertiary">#999999</color>
+    <color name="volume">#82B1FF</color>
+    <color name="cost">#69F0AE</color>
+    <color name="mileage">#B388FF</color>
+    <color name="rm_per_km">#FFD180</color>
+    <color name="l_per_100">#80DEEA</color>
+    <color name="active_text">#69F0AE</color>
+    <color name="active_background">#3369F0AE</color>
+</resources>

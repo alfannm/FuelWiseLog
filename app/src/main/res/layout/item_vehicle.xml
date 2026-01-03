@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="My Vehicle"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textStyle="bold"
                 android:textSize="15sp" />
 
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Car"
-                android:textColor="#666666"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
 
             <TextView
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ABC1234"
-                android:textColor="#6B4EFF"
+                android:textColor="@color/mileage"
                 android:textSize="12sp"
                 android:visibility="gone"/>
         </LinearLayout>
@@ -72,8 +72,8 @@
             android:layout_height="wrap_content"
             android:text="Active"
             android:textSize="12sp"
-            android:textColor="#1B5E20"
-            android:background="#3322C55E"
+            android:textColor="@color/active_text"
+            android:background="@color/active_background"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="4dp"

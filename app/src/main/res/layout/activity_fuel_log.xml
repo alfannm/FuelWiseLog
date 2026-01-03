@@ -45,14 +45,14 @@
                     android:text="Fuel Log"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#111111" />
+                    android:textColor="@color/text_primary" />
 
                 <TextView
                     android:id="@+id/tvCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0 records"
-                    android:textColor="#666666"
+                    android:textColor="@color/text_secondary"
                     android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:text="Average Efficiency"
                 android:textStyle="bold"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:layout_marginBottom="10dp"/>
 
@@ -115,7 +115,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Avg RM/km"
-                        android:textColor="#666666"
+                        android:textColor="@color/text_secondary"
                         android:textSize="12sp"/>
 
                     <TextView
@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:text="RM 0.00"
                         android:textStyle="bold"
-                        android:textColor="#111111"
+                        android:textColor="@color/text_primary"
                         android:textSize="18sp"/>
                 </LinearLayout>
 
@@ -140,7 +140,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Avg L/100km"
-                        android:textColor="#666666"
+                        android:textColor="@color/text_secondary"
                         android:textSize="12sp"/>
 
                     <TextView
@@ -149,7 +149,7 @@
                         android:layout_height="wrap_content"
                         android:text="0.00 L"
                         android:textStyle="bold"
-                        android:textColor="#111111"
+                        android:textColor="@color/text_primary"
                         android:textSize="18sp"/>
                 </LinearLayout>
 
@@ -173,14 +173,14 @@
                 android:layout_height="wrap_content"
                 android:text="No fuel records yet"
                 android:textStyle="bold"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add your first fuel record to get started"
-                android:textColor="#666666"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp"
                 android:layout_marginTop="6dp" />
         </LinearLayout>

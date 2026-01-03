@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:text="My Vehicles"
                     android:textSize="18sp"
-                    android:textColor="#111111"
+                    android:textColor="@color/text_primary"
                     android:textStyle="bold" />
 
                 <TextView
@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0 vehicles"
-                    android:textColor="#666666"
+                    android:textColor="@color/text_secondary"
                     android:textSize="13sp" />
             </LinearLayout>
 
@@ -90,7 +90,7 @@
                 android:text="Add New Vehicle"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:layout_marginBottom="10dp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -140,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Color"
-                android:textColor="#666666"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="6dp"/>
@@ -195,14 +195,14 @@
                 android:layout_height="wrap_content"
                 android:text="No vehicles yet"
                 android:textStyle="bold"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add your first vehicle to get started"
-                android:textColor="#666666"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp"
                 android:layout_marginTop="6dp" />
         </LinearLayout>

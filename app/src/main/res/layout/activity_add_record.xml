@@ -44,13 +44,13 @@
                     android:text="Add Fuel Record"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#111111" />
+                    android:textColor="@color/text_primary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Log a new fill-up"
-                    android:textColor="#666666"
+                    android:textColor="@color/text_secondary"
                     android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
@@ -114,14 +114,14 @@
                         android:layout_height="wrap_content"
                         android:text="Vehicle Name"
                         android:textStyle="bold"
-                        android:textColor="#111111"/>
+                        android:textColor="@color/text_primary"/>
 
                     <TextView
                         android:id="@+id/tvPreviewType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Type"
-                        android:textColor="#666666"
+                        android:textColor="@color/text_secondary"
                         android:textSize="13sp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -211,7 +211,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Last recorded: — km"
-                android:textColor="#666666"
+                android:textColor="@color/text_secondary"
                 android:textSize="12sp"
                 android:layout_marginBottom="6dp"/>
 
