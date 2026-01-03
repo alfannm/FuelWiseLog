@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FuelWise Log</string>
-    <string name="add_record">Add record</string>
-    <string name="no_records">No fuel records yet. Tap + to add your first fill-up.</string>
-    <string name="summary">Summary</string>
-    <string name="avg_l_per_100km">Average L/100km: %1$s</string>
-    <string name="avg_rm_per_km">Average RM/km: %1$s</string>
-    <string name="delete_all">Delete all</string>
-    <string name="confirm">Confirm</string>
-    <string name="delete_all_message">Delete all fuel records? This cannot be undone.</string>
-    <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
     <string name="select">Select</string>
-
-    <string name="add_fillup">Add fuel fill-up</string>
-    <string name="last_odometer">Last odometer: %1$s km</string>
-    <string name="liters_hint">Fuel volume (L)</string>
-    <string name="cost_hint">Total cost (RM)</string>
-    <string name="odometer_hint">Odometer (km)</string>
-    <string name="save">Save</string>
-
-    <string name="invalid_number">Please enter a valid number.</string>
-    <string name="must_be_positive">Value must be greater than 0.</string>
-    <string name="odometer_must_increase">Odometer must be greater than the last record.</string>
 
     <string-array name="themes">
         <item>Light</item>

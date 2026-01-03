@@ -26,10 +26,6 @@ public class FuelRepository {
         return vehicleDao.getAll();
     }
 
-    public LiveData<Vehicle> getVehicleById(long id) {
-        return vehicleDao.getById(id);
-    }
-
     public void insertVehicle(Vehicle v) {
         FuelDatabase.DB_EXECUTOR.execute(() -> vehicleDao.insert(v));
     }
@@ -53,10 +49,6 @@ public class FuelRepository {
 
     public LiveData<List<FuelRecord>> getAllRecordsOrderByVehicleMileageAsc() {
         return fuelRecordDao.getAllOrderByVehicleAndMileageAsc();
-    }
-
-    public LiveData<List<FuelRecordWithVehicle>> getAllRecordsWithVehicle() {
-        return fuelRecordDao.getAllWithVehicle();
     }
 
     /** Alias used by FuelViewModel */

@@ -14,18 +14,8 @@ public interface FuelRecordDao {
     @Delete
     void delete(FuelRecord record);
 
-    @Transaction
-    @Query("SELECT * FROM fuel_records ORDER BY dateIso DESC, id DESC")
-    LiveData<List<FuelRecordWithVehicle>> getAllWithVehicle();
-
     @Query("SELECT * FROM fuel_records WHERE vehicleId = :vehicleId ORDER BY mileageKm ASC")
     LiveData<List<FuelRecord>> getByVehicleMileageAsc(long vehicleId);
-
-    @Query("SELECT * FROM fuel_records WHERE vehicleId = :vehicleId ORDER BY mileageKm ASC")
-    List<FuelRecord> getByVehicleMileageAscBlocking(long vehicleId);
-
-    @Query("SELECT mileageKm FROM fuel_records WHERE vehicleId = :vehicleId ORDER BY mileageKm DESC LIMIT 1")
-    Double getLastMileageBlocking(long vehicleId);
 
     // LiveData version for UI observation (Add Record validation)
     @Query("SELECT mileageKm FROM fuel_records WHERE vehicleId = :vehicleId ORDER BY mileageKm DESC LIMIT 1")
