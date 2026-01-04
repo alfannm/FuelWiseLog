@@ -13,8 +13,10 @@ import com.example.fuelwiselog.databinding.ItemFuelRecordBinding;
 
 import java.text.DecimalFormat;
 
+// Adapter class that manages the list of fuel records shown in the RecyclerView
 public class FuelLogAdapter extends ListAdapter<FuelLogItem, FuelLogAdapter.VH> {
 
+    // Callback interface to handle delete clicks in the main Activity
     public interface Actions {
         void onDelete(long recordId);
     }
@@ -28,6 +30,7 @@ public class FuelLogAdapter extends ListAdapter<FuelLogItem, FuelLogAdapter.VH> 
         this.actions = actions;
     }
 
+    // Creates a new view holder for a single list item layout
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,6 +42,7 @@ public class FuelLogAdapter extends ListAdapter<FuelLogItem, FuelLogAdapter.VH> 
         return new VH(b);
     }
 
+    // Binds data to the view at a specific position
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
         holder.bind(getItem(position));
@@ -52,6 +56,7 @@ public class FuelLogAdapter extends ListAdapter<FuelLogItem, FuelLogAdapter.VH> 
             this.b = binding;
         }
 
+        // Populates the UI elements with data from the FuelLogItem
         void bind(FuelLogItem item) {
             // Populate header details for the record row.
             b.tvVehicleName.setText(item.vehicleName == null ? "Vehicle" : item.vehicleName);
@@ -67,9 +72,10 @@ public class FuelLogAdapter extends ListAdapter<FuelLogItem, FuelLogAdapter.VH> 
             b.tvCost.setText("RM" + df2.format(item.costRm));
             b.tvMileage.setText(df0.format(item.mileageKm) + "km");
 
-            // Delegate delete action to the host screen.
+            // Delegate delete action to the host screen (Activity).
             b.btnDelete.setOnClickListener(v -> actions.onDelete(item.recordId));
 
+            // Shows efficiency stats only if previous history exists; otherwise hides the block
             if (item.hasEfficiency) {
                 // Show efficiency block when enough data exists.
                 b.layoutEfficiency.setVisibility(android.view.View.VISIBLE);
@@ -86,7 +92,7 @@ public class FuelLogAdapter extends ListAdapter<FuelLogItem, FuelLogAdapter.VH> 
         }
     }
 
-    // DiffUtil keeps list updates efficient and animated.
+    // DiffUtil optimization: calculates differences between lists to animate updates efficiently
     private static final DiffUtil.ItemCallback<FuelLogItem> DIFF = new DiffUtil.ItemCallback<FuelLogItem>() {
         @Override
         public boolean areItemsTheSame(@NonNull FuelLogItem oldItem, @NonNull FuelLogItem newItem) {

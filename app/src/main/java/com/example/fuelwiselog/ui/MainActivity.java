@@ -22,6 +22,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+// The Dashboard screen: Entry point of the application.
+// Displays summary statistics and navigation to other features.
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Initialize ViewModel to access database data
         vm = new ViewModelProvider(this).get(FuelViewModel.class);
 
         // Theme selector is managed via a dropdown adapter.
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         binding.cardFuelLog.setOnClickListener(v ->
                 startActivity(new Intent(this, FuelLogActivity.class)));
 
+        // Observe vehicle list to handle the "Current Vehicle" display
         vm.getVehicles().observe(this, vehicles -> {
             // Ensure we have a selected vehicle if any exist.
             selectedVehicleId = Prefs.getSelectedVehicleId(this);
@@ -86,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         observeSelectedVehicleRecords();
     }
 
+    // Configures the dropdown to switch between Light, Dark, and System themes
     private void setupThemeDropdown() {
         // Custom adapter disables filtering and uses fixed theme list.
         String[] themes = getResources().getStringArray(R.array.themes);
@@ -135,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Disables "Add Record" and "Fuel Log" buttons if no vehicle is selected (prevents errors)
     private void updateActionEnabledState() {
         // Disable actions when no vehicle is available.
         boolean hasVehicle = selectedVehicleId >= 0;
@@ -146,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
         binding.cardFuelLog.setAlpha(hasVehicle ? 1f : 0.5f);
     }
 
+    // Updates the UI with the selected vehicle's details (Name, Icon, Color)
     private void renderSelectedVehicleCard(List<Vehicle> vehicles) {
         // Resolve the selected vehicle from the list.
         Vehicle sel = null;
@@ -178,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception ignored) {}
     }
 
+    // Watches the database for changes to the selected vehicle's records to update the summary card
     private void observeSelectedVehicleRecords() {
         if (selectedVehicleId < 0) return;
 
@@ -204,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Calculates total statistics and average efficiency based on the history list
     private HomeSummary computeSummary(List<FuelRecord> records) {
         if (records == null || records.size() < 2) return null;
 
@@ -242,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
         return new HomeSummary(totalDistance, totalCost, avgRm, avgL);
     }
 
+    // Simple data holder for the dashboard statistics
     private static class HomeSummary {
         final double totalDistanceKm;
         final double totalCostRm;

@@ -2,18 +2,20 @@ package com.example.fuelwiselog.ui;
 
 import java.util.Locale;
 
+// Helper utility that purely handles visual styling (converting text types to icons)
 final class VehicleEmojiMapper {
 
     private VehicleEmojiMapper() {}
 
     // Map vehicle type strings to emoji-like symbols for UI badges.
+    // Takes a string like "Car" or "Honda Civic" and returns a matching emoji (🚗)
     static String getEmoji(String type) {
         if (type == null) {
-            return "🛞";
+            return "🛞"; // Default fallback
         }
 
         String t = type.trim().toLowerCase(Locale.ROOT);
-        // Order matters; check more specific keywords first.
+        // Simple string matching to set the appropriate icon for the UI
         if (t.contains("motor")) {
             return "🏍️";
         }
@@ -30,6 +32,6 @@ final class VehicleEmojiMapper {
             return "🛞";
         }
 
-        return "🛞";
+        return "🛞"; // Fallback for unknown types
     }
 }

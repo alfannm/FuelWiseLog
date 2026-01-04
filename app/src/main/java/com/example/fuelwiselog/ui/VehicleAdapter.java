@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.fuelwiselog.data.Vehicle;
 import com.example.fuelwiselog.databinding.ItemVehicleBinding;
 
+// Adapter for the "Manage Vehicles" list; handles displaying, selecting, editing, and deleting vehicles
 public class VehicleAdapter extends ListAdapter<Vehicle, VehicleAdapter.VH> {
 
+    // Callbacks to send user actions (clicks) back to the Activity
     public interface Actions {
         void onEdit(Vehicle v);
         void onSelect(Vehicle v);
@@ -28,6 +30,7 @@ public class VehicleAdapter extends ListAdapter<Vehicle, VehicleAdapter.VH> {
         this.actions = actions;
     }
 
+    // Updates which vehicle is currently "Active" and refreshes the list to show the purple highlight
     public void setSelectedVehicleId(long id) {
         // Refresh selection state across visible rows.
         selectedVehicleId = id;
@@ -64,7 +67,7 @@ public class VehicleAdapter extends ListAdapter<Vehicle, VehicleAdapter.VH> {
             b.tvType.setText(v.getType());
             b.tvVehicleIcon.setText(VehicleEmojiMapper.getEmoji(v.getType()));
 
-            // Show plate only when provided.
+            // Show plate only when provided; otherwise hide the text view to save space.
             if (v.getPlateNumber() != null && !v.getPlateNumber().trim().isEmpty()) {
                 b.tvPlate.setVisibility(android.view.View.VISIBLE);
                 b.tvPlate.setText(v.getPlateNumber());
@@ -78,7 +81,7 @@ public class VehicleAdapter extends ListAdapter<Vehicle, VehicleAdapter.VH> {
                 b.cardColor.setCardBackgroundColor(Color.LTGRAY);
             }
 
-            // Highlight the currently selected vehicle.
+            // Visual Logic: If this is the selected vehicle, show the "Active" badge and purple border.
             boolean isActive = v.getId() == selectedVehicleId;
             b.tvActive.setVisibility(isActive ? android.view.View.VISIBLE : android.view.View.GONE);
             b.cardOuter.setStrokeColor(isActive ? Color.parseColor("#B67CFF") : Color.TRANSPARENT);
@@ -90,7 +93,7 @@ public class VehicleAdapter extends ListAdapter<Vehicle, VehicleAdapter.VH> {
         }
     }
 
-    // DiffUtil keeps list updates efficient.
+    // DiffUtil: Optimizes list performance by calculating exactly which rows changed
     private static final DiffUtil.ItemCallback<Vehicle> DIFF = new DiffUtil.ItemCallback<Vehicle>() {
         @Override
         public boolean areItemsTheSame(@NonNull Vehicle oldItem, @NonNull Vehicle newItem) {

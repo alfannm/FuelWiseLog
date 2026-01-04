@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Activity that displays the history of fuel records (The "Log" screen)
 public class FuelLogActivity extends AppCompatActivity {
 
     private ActivityFuelLogBinding binding;
@@ -43,6 +44,7 @@ public class FuelLogActivity extends AppCompatActivity {
 
         binding.btnBack.setOnClickListener(v -> finish());
 
+        // Set up the list adapter with a delete callback
         adapter = new FuelLogAdapter(recordId -> {
             // Confirm record deletion before removing.
             new AlertDialog.Builder(FuelLogActivity.this)
@@ -56,6 +58,7 @@ public class FuelLogActivity extends AppCompatActivity {
         binding.rvRecords.setLayoutManager(new LinearLayoutManager(this));
         binding.rvRecords.setAdapter(adapter);
 
+        // Observe vehicle list to populate the filter dropdown
         viewModel.getVehicles().observe(this, list -> {
             // Vehicles drive filter labels and display metadata.
             vehicles = list;
@@ -63,6 +66,7 @@ public class FuelLogActivity extends AppCompatActivity {
             recomputeUi();
         });
 
+        // Observe all records (sorted by mileage) to perform efficiency calculations
         viewModel.getAllRecordsOrderByVehicleMileageAsc().observe(this, list -> {
             // Mileage-ordered records are used for efficiency math.
             recordsMileageOrdered = list;
@@ -70,6 +74,7 @@ public class FuelLogActivity extends AppCompatActivity {
         });
     }
 
+    // Configures the top dropdown to filter logs by specific vehicle
     private void setupFilterDropdown() {
         // Build filter list including the "All Vehicles" option.
         List<String> labels = new ArrayList<>();
@@ -95,6 +100,7 @@ public class FuelLogActivity extends AppCompatActivity {
         });
     }
 
+    // Core Logic: Processes raw data to calculate efficiency and prepares the display list
     private void recomputeUi() {
         if (vehicles == null || recordsMileageOrdered == null) return;
 
@@ -108,6 +114,7 @@ public class FuelLogActivity extends AppCompatActivity {
         FuelRecord prev = null;
         long prevVehicleId = -1;
 
+        // Iterate through records (sorted by mileage) to calculate distance between fill-ups
         for (FuelRecord r : recordsMileageOrdered) {
             FuelLogItem item = new FuelLogItem();
             item.recordId = r.getId();
@@ -130,13 +137,16 @@ public class FuelLogActivity extends AppCompatActivity {
 
             item.hasEfficiency = false;
 
+            // Efficiency Math: needs two consecutive records for the same vehicle
             if (prev != null && prevVehicleId == r.getVehicleId()) {
                 // Only compute efficiency when records are consecutive for a vehicle.
                 double distance = r.getMileageKm() - prev.getMileageKm();
                 if (distance > 0) {
                     item.hasEfficiency = true;
                     item.distanceKm = distance;
+                    // Formula: Cost / Distance
                     item.rmPerKm = r.getCostRm() / distance;
+                    // Formula: (Liters / Distance) * 100
                     item.litersPer100Km = (r.getVolumeLiters() / distance) * 100.0;
                 }
             }
@@ -172,6 +182,7 @@ public class FuelLogActivity extends AppCompatActivity {
         updateAverageCard(avgVehicleId);
     }
 
+    // Calculates and displays the overall average statistics for the top card
     private void updateAverageCard(long vehicleId) {
         if (vehicleId <= 0) {
             binding.cardAverage.setVisibility(android.view.View.GONE);

@@ -20,6 +20,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+// Activity screen for adding a new fuel fill-up record
 public class AddRecordActivity extends AppCompatActivity {
 
     private ActivityAddRecordBinding binding;
@@ -37,6 +38,7 @@ public class AddRecordActivity extends AppCompatActivity {
         binding = ActivityAddRecordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Connect to ViewModel to handle database operations
         viewModel = new ViewModelProvider(this).get(FuelViewModel.class);
 
         binding.btnBack.setOnClickListener(v -> finish());
@@ -59,10 +61,12 @@ public class AddRecordActivity extends AppCompatActivity {
                     c.get(Calendar.MONTH),
                     c.get(Calendar.DAY_OF_MONTH)
             );
+            // Restrict DatePicker to prevent selecting future dates
             picker.getDatePicker().setMaxDate(System.currentTimeMillis());
             picker.show();
         });
 
+        // Load vehicles from database; required to add a record
         viewModel.getVehicles().observe(this, list -> {
             vehicles = list;
 
@@ -76,6 +80,7 @@ public class AddRecordActivity extends AppCompatActivity {
             // Build the dropdown and select a default vehicle.
             setupVehicleDropdown();
 
+            // Auto-select the last used vehicle (from Prefs) or the first in list
             long prefId = Prefs.getSelectedVehicleId(this);
             if (prefId > 0) {
                 setSelectedVehicle(prefId);
@@ -87,6 +92,7 @@ public class AddRecordActivity extends AppCompatActivity {
         binding.btnSave.setOnClickListener(v -> saveRecord());
     }
 
+    // Populates the dropdown menu with vehicle names
     private void setupVehicleDropdown() {
         // Map vehicles into readable dropdown labels.
         List<String> labels = new ArrayList<>();
@@ -101,6 +107,7 @@ public class AddRecordActivity extends AppCompatActivity {
         });
     }
 
+    // Updates UI with selected vehicle info and fetches its last mileage
     private void setSelectedVehicle(long vehicleId) {
         selectedVehicleId = vehicleId;
 
@@ -121,7 +128,7 @@ public class AddRecordActivity extends AppCompatActivity {
             binding.actVehicle.setText(v.getName() + " (" + v.getType() + ")", false);
         }
 
-        // Load last mileage to validate the current entry.
+        // Load last mileage to validate the current entry (prevent logic errors).
         viewModel.getLastMileage(vehicleId).observe(this, last -> {
             if (last == null) {
                 lastMileage = -1;
@@ -133,6 +140,7 @@ public class AddRecordActivity extends AppCompatActivity {
         });
     }
 
+    // Validates input fields and saves the data to the database
     private void saveRecord() {
         clearErrors();
 
@@ -163,6 +171,7 @@ public class AddRecordActivity extends AppCompatActivity {
             binding.tilCost.setError("Invalid cost");
             ok = false;
         }
+        // Critical check: New mileage must be higher than previous history
         if (mileage == null || mileage <= 0) {
             binding.tilMileage.setError("Invalid mileage");
             ok = false;
@@ -191,6 +200,7 @@ public class AddRecordActivity extends AppCompatActivity {
         binding.tilMileage.setError(null);
     }
 
+    // Helper to ensure users don't log future dates
     private boolean isFutureDate(String dateIso) {
         try {
             iso.setLenient(false);

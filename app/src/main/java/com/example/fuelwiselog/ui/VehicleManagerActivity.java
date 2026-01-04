@@ -22,13 +22,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// Activity for managing vehicles and the add/edit form.
+// Activity for managing vehicles (Add, Edit, Delete, Select) and the input form.
 public class VehicleManagerActivity extends AppCompatActivity {
 
     private ActivityVehicleManagerBinding binding;
     private FuelViewModel viewModel;
     private VehicleAdapter adapter;
 
+    // Holds the vehicle currently being edited (null if adding a new one)
     private Vehicle editing = null;
 
     private final List<String> vehicleTypes = Arrays.asList("Car", "Motorcycle", "Lorry", "Van", "Others");
@@ -56,6 +57,7 @@ public class VehicleManagerActivity extends AppCompatActivity {
         binding.btnCancelVehicle.setOnClickListener(v -> hideForm());
         binding.btnSaveVehicle.setOnClickListener(v -> onSaveVehicle());
 
+        // Observe database changes: updates the list whenever vehicles are added/removed
         viewModel.getVehicles().observe(this, vehicles -> {
             // Update subtitle and empty state from current list.
             binding.tvSubtitle.setText(vehicles.size() + " vehicle" + (vehicles.size() == 1 ? "" : "s"));
@@ -68,12 +70,13 @@ public class VehicleManagerActivity extends AppCompatActivity {
         });
     }
 
+    // Configures the RecyclerView and defines what happens when list buttons are clicked
     private void setupRecycler() {
         adapter = new VehicleAdapter(new VehicleAdapter.Actions() {
             @Override public void onEdit(Vehicle v) { startEdit(v); }
 
             @Override public void onSelect(Vehicle v) {
-                // Persist selection and update adapter state.
+                // Persist selection (save to Prefs) and visually update the list.
                 Prefs.setSelectedVehicleId(VehicleManagerActivity.this, v.getId());
                 adapter.setSelectedVehicleId(v.getId());
                 Toast.makeText(VehicleManagerActivity.this, "Selected: " + v.getName(), Toast.LENGTH_SHORT).show();
@@ -94,6 +97,7 @@ public class VehicleManagerActivity extends AppCompatActivity {
         binding.rvVehicles.setAdapter(adapter);
     }
 
+    // Sets up the dropdown menu for selecting vehicle type (Car, Bike, etc.)
     private void setupTypeDropdown() {
         // Populate vehicle type dropdown.
         ArrayAdapter<String> a = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, vehicleTypes);
@@ -101,6 +105,7 @@ public class VehicleManagerActivity extends AppCompatActivity {
         binding.actType.setText(vehicleTypes.get(0), false);
     }
 
+    // Dynamically creates color circles (Chips) for the user to select a vehicle tag color
     private void setupColorChips() {
         // Build selectable color chips for vehicle color.
         binding.chipGroupColors.removeAllViews();
@@ -147,6 +152,7 @@ public class VehicleManagerActivity extends AppCompatActivity {
         }
     }
 
+    // Shows or hides the input form when the "Plus" button is clicked
     private void toggleForm() {
         // Toggle between showing and hiding the add/edit form.
         if (binding.layoutForm.getVisibility() == android.view.View.VISIBLE) {
@@ -156,6 +162,7 @@ public class VehicleManagerActivity extends AppCompatActivity {
         }
     }
 
+    // Prepares the form for adding a NEW vehicle (clears inputs)
     private void startAdd() {
         editing = null;
         // Reset form for creating a new vehicle.
@@ -169,6 +176,7 @@ public class VehicleManagerActivity extends AppCompatActivity {
         binding.chipGroupColors.check(binding.chipGroupColors.getChildAt(0).getId());
     }
 
+    // Prepares the form for EDITING an existing vehicle (fills inputs)
     private void startEdit(Vehicle v) {
         editing = v;
         // Populate form for editing.
@@ -191,12 +199,14 @@ public class VehicleManagerActivity extends AppCompatActivity {
         }
     }
 
+    // Closes the input form
     private void hideForm() {
         // Hide form and clear edit state.
         binding.layoutForm.setVisibility(android.view.View.GONE);
         editing = null;
     }
 
+    // Validates inputs and saves data (Inserts if new, Updates if editing)
     private void onSaveVehicle() {
         // Read user input from the form.
         String name = binding.etName.getText() == null ? "" : binding.etName.getText().toString().trim();

@@ -5,14 +5,17 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+// Defines the "fuel_records" table. Each row represents one fill-up.
 @Entity(
         tableName = "fuel_records",
+        // Links this record to a Vehicle. If the Vehicle is deleted, its records are deleted too.
         foreignKeys = @ForeignKey(
                 entity = Vehicle.class,
                 parentColumns = "id",
                 childColumns = "vehicleId",
                 onDelete = ForeignKey.CASCADE
         ),
+        // Indexes speed up queries, specifically when sorting by mileage to calculate efficiency.
         indices = {
                 @Index("vehicleId"),
                 @Index(value = {"vehicleId", "mileageKm"})
@@ -20,16 +23,17 @@ import androidx.room.PrimaryKey;
 )
 public class FuelRecord {
 
+    // Unique ID for this specific log entry (Primary Key).
     @PrimaryKey(autoGenerate = true)
     private long id;
 
-    // Foreign key to vehicles.id.
+    // The ID of the vehicle this record belongs to.
     private long vehicleId;
 
-    // ISO date "yyyy-MM-dd" so ordering works lexicographically
+    // Date stored as "YYYY-MM-DD" string so it sorts correctly.
     private String dateIso;
 
-    // Record measurements captured at fill-up time.
+    // The raw data input by the user at the gas station.
     private double volumeLiters;
     private double costRm;
     private double mileageKm;
